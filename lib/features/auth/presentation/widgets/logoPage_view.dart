@@ -1,0 +1,88 @@
+import 'package:flutter/material.dart';
+import 'package:myapp/core/widget/animations/staggered_animations.dart';
+import 'package:myapp/core/widget/form.dart';
+import 'package:myapp/core/widget/styles.dart';
+import 'package:myapp/static/AppColors.dart';
+import 'package:myapp/static/app_text.dart';
+import 'package:myapp/core/widget/file_picker.dart';
+
+class LogoPageView extends StatefulWidget {
+  const LogoPageView({super.key, required this.onNext});
+  final VoidCallback onNext;
+
+  @override
+  State<LogoPageView> createState() => _LogoPageViewState();
+}
+
+class _LogoPageViewState extends State<LogoPageView> {
+  String? _selectedLogoPath;
+
+  void _handleLogoUpload(List<String> paths) {
+    if (paths.isNotEmpty) {
+      setState(() {
+        _selectedLogoPath = paths.first;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedListView(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      children: [
+        Text(
+          AppText.yourLogo,
+          textAlign: TextAlign.left,
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: AppColors.buttonText,
+          ),
+        ),
+        Styles.gap8,
+        Text(
+          AppText.connectText,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 40),
+        Center(
+          child: _selectedLogoPath != null
+              ? UniversalImageView(
+                  path: _selectedLogoPath!,
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                )
+              : const CircleAvatar(
+                  radius: 60,
+                  backgroundColor: AppColors.buttonBackground,
+                  child: Icon(
+                    Icons.add_a_photo_rounded,
+                    color: AppColors.buttonText,
+                    size: 40,
+                  ),
+                ),
+        ),
+        const SizedBox(height: 50),
+        AppFilePicker(
+          label: "Upload Logo",
+          onChange: _handleLogoUpload,
+        ),
+        Styles.gap16,
+        TransButton(
+          label: "Skip",
+          height: 50,
+          backgroundColor: Colors.transparent,
+          borderColor: AppColors.grey,
+          textColor: AppColors.buttonText,
+          onTap: () {
+            // AppNavigator.push(context, HomePage.route());
+          },
+        ),
+      ],
+    );
+  }
+}
