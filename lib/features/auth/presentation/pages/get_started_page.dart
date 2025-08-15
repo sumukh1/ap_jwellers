@@ -7,13 +7,13 @@ import 'package:myapp/features/auth/presentation/pages/second_screen_page.dart';
 import 'package:myapp/static/AppImages.dart';
 import 'package:myapp/static/AppNavigator.dart';
 
-class FirstScreenPage extends StatelessWidget {
-  const FirstScreenPage({super.key});
+class GetStartedPage extends StatelessWidget {
+  const GetStartedPage({super.key});
 
   static const routeName = "/FirstScreenPage";
   static String route() => routeName;
 
-  static Widget builder(GoRouterState state) => const FirstScreenPage();
+  static Widget builder(GoRouterState state) => const GetStartedPage();
 
   @override
   Widget build(BuildContext context) {

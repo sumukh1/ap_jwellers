@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:myapp/features/auth/presentation/pages/get_started_page.dart';
+import 'package:myapp/static/AppNavigator.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,7 +21,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      // AppNavigator.pushReplacement(FirstScreenPage.routeName);
+      // ignore: use_build_context_synchronously
+      AppNavigator.pushReplacement(context, GetStartedPage.route());
     });
   }
 
