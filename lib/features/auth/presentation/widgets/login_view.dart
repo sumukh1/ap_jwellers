@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/core/widget/animations/staggered_animations.dart';
 import 'package:myapp/core/widget/form.dart';
 import 'package:myapp/core/widget/styles.dart';
-import 'package:myapp/features/auth/presentation/pages/verify_page.dart';
+import 'package:myapp/features/home/presentation/pages/home_page.dart'; // Import HomePage
 import 'package:myapp/static/AppColors.dart';
 import 'package:myapp/static/AppImages.dart';
 import 'package:myapp/static/AppNavigator.dart';
@@ -65,6 +65,16 @@ class LoginView extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      // Title or Logo
+                      Text(
+                        'Welcome Back!',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textColor,
+                        ),
+                      ),
+                      Styles.gap25,
                       // Phone input
                       PhoneField(
                         controller: phoneController,
@@ -81,7 +91,7 @@ class LoginView extends StatelessWidget {
                         height: 50,
                         margin: Styles.edgeAll10,
                         onTap: () {
-                          AppNavigator.push(context, VerifyPage.route());
+                          AppNavigator.pushReplacement(context, HomePage.route()); // Navigate to HomePage
                         },
                         label: "Login",
                         borderColor: null,

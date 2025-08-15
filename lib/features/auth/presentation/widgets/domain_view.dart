@@ -68,8 +68,9 @@ class _DomainSelectionButtonsState extends State<DomainSelectionButtons> {
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 25),
+              ),
+              backgroundColor: isSelected ? AppColors.buttonBackground.withOpacity(0.2) : AppColors.white,
+              padding: const EdgeInsets.symmetric(vertical: 20),
               ),
               child: Text(
                 type,

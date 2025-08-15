@@ -25,7 +25,7 @@ class SignupForm extends StatelessWidget {
             AppText.signupText,
             textAlign: TextAlign.left,
             style: const TextStyle(
-              fontSize: 24,
+              fontSize: 28,
               fontWeight: FontWeight.bold,
               color: AppColors.buttonText,
             ),
@@ -38,36 +38,21 @@ class SignupForm extends StatelessWidget {
             placeHolder: "Enter School/Institute Name",
             controller: schoolController,
           ),
+          Styles.gap12,
           AppTextField(
             label: "Email Address",
             placeHolder: "Enter Your Email",
             controller: emailController,
           ),
+          Styles.gap12,
           AppTextField(
             label: "Phone Number",
             placeHolder: "Enter Your Phone Number",
             controller: phoneController,
             isNumeric: true,
           ),
-          AppTextField(
-            label: "Operational Since",
-            placeHolder: "DD/MM/YYYY",
-            controller: dateController,
-            readOnly: true,
-            suffixIcon: const Icon(Icons.calendar_today, color: AppColors.grey),
-            onTap: () async {
-              DateTime? picked = await showDatePicker(
-                context: context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime(1990),
-                lastDate: DateTime.now(),
-              );
-              if (picked != null) {
-                dateController.text =
-                    "${picked.day}/${picked.month}/${picked.year}";
-              }
-            },
-          ),
+          Styles.gap12,
+
           AppTextField(
             label: "Address",
             placeHolder: "Enter Your Address",
@@ -75,7 +60,7 @@ class SignupForm extends StatelessWidget {
             suffixIcon:
                 const Icon(Icons.location_on_outlined, color: Colors.grey),
           ),
-
+          Styles.gap16,
           const SizedBox(height: 30),
 
           // Submit Button

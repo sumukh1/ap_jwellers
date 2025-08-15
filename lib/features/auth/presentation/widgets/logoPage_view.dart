@@ -3,7 +3,9 @@ import 'package:myapp/core/widget/animations/staggered_animations.dart';
 import 'package:myapp/core/widget/form.dart';
 import 'package:myapp/core/widget/styles.dart';
 import 'package:myapp/static/AppColors.dart';
+import 'package:myapp/static/AppNavigator.dart';
 import 'package:myapp/static/app_text.dart';
+import 'package:myapp/features/home/presentation/pages/home_page.dart';
 import 'package:myapp/core/widget/file_picker.dart';
 
 class LogoPageView extends StatefulWidget {
@@ -49,22 +51,29 @@ class _LogoPageViewState extends State<LogoPageView> {
         ),
         const SizedBox(height: 40),
         Center(
-          child: _selectedLogoPath != null
-              ? UniversalImageView(
-                  path: _selectedLogoPath!,
-                  width: 120,
-                  height: 120,
-                  fit: BoxFit.cover,
-                )
-              : const CircleAvatar(
-                  radius: 60,
-                  backgroundColor: AppColors.buttonBackground,
-                  child: Icon(
-                    Icons.add_a_photo_rounded,
-                    color: AppColors.buttonText,
-                    size: 40,
+          child: Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.grey.withOpacity(0.2),
+              border: Border.all(color: AppColors.grey, width: 1.5),
+            ),
+            child: _selectedLogoPath != null
+                ? ClipOval(
+                    child: UniversalImageView(
+                      path: _selectedLogoPath!,
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : Icon(
+                    Icons.camera_alt_outlined,
+                    color: AppColors.grey,
+                    size: 50,
                   ),
-                ),
+          ),
         ),
         const SizedBox(height: 50),
         AppFilePicker(
@@ -79,7 +88,7 @@ class _LogoPageViewState extends State<LogoPageView> {
           borderColor: AppColors.grey,
           textColor: AppColors.buttonText,
           onTap: () {
-            // AppNavigator.push(context, HomePage.route());
+            AppNavigator.pushReplacement(context, HomePage.route());
           },
         ),
       ],
