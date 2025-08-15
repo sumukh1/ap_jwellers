@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/core/widget/animations/text_animation.dart';
 import 'package:myapp/static/AppColors.dart';
 
 class HomeView extends StatelessWidget {
@@ -13,10 +14,13 @@ class HomeView extends StatelessWidget {
           // Banner Placeholder
           Container(
             height: 150,
-            color: AppColors.primary,
+            color: AppColors.buttonBackground,
             child: Center(
-              child: Text(
-                'Promotional Banner',
+              child: AnimatedText(
+                type: AnimatedTextType.typing,
+                // repeat: true,
+                repeatDuration: Duration(seconds: 5),
+                text: 'Promotional Banner',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -28,8 +32,10 @@ class HomeView extends StatelessWidget {
           const SizedBox(height: 16.0), // Add some spacing below the banner
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Coins',
+            child: AnimatedText(
+              type: AnimatedTextType.scale,
+              repeatDuration: Duration(seconds: 3),
+              text: 'Coins',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -44,7 +50,8 @@ class HomeView extends StatelessWidget {
             itemCount: 4, // Placeholder count
             itemBuilder: (context, index) {
               return Card(
-                margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -58,8 +65,16 @@ class HomeView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Coin ${index + 1}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.textColor)),
-                          Text('\$1000', style: TextStyle(fontSize: 14, color: AppColors.buttonBackground)), // Placeholder price
+                          Text('Coin ${index + 1}',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.textColor)),
+                          Text('\$1000',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColors
+                                      .buttonBackground)), // Placeholder price
                         ],
                       ),
                     ],
@@ -86,7 +101,8 @@ class HomeView extends StatelessWidget {
             itemCount: 4, // Placeholder count
             itemBuilder: (context, index) {
               return Card(
-                margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -100,8 +116,16 @@ class HomeView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Biscuit ${index + 1}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.textColor)),
-                          Text('\$500', style: TextStyle(fontSize: 14, color: AppColors.buttonBackground)), // Placeholder price
+                          Text('Biscuit ${index + 1}',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.textColor)),
+                          Text('\$500',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColors
+                                      .buttonBackground)), // Placeholder price
                         ],
                       ),
                     ],
