@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/static/AppColors.dart';
+import 'package:myapp/static/ThirdPartyApi.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  double goldPrice = 0.0;
+  @override
+  void initState() {
+    super.initState();
+    fetchGoldPrice();
+  }
+
+  Future<void> fetchGoldPrice() async {
+    final price = await ThirdPartyApi.goldPrice24KInINRPerGram();
+    setState(() {
+      goldPrice = price * 10;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +49,7 @@ class HomeView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              'Coins',
+              'Coins ${goldPrice}',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -44,7 +64,8 @@ class HomeView extends StatelessWidget {
             itemCount: 4, // Placeholder count
             itemBuilder: (context, index) {
               return Card(
-                margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -58,8 +79,16 @@ class HomeView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Coin ${index + 1}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.textColor)),
-                          Text('\$1000', style: TextStyle(fontSize: 14, color: AppColors.buttonBackground)), // Placeholder price
+                          Text('Coin ${index + 1}',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.textColor)),
+                          Text('\$1000',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColors
+                                      .buttonBackground)), // Placeholder price
                         ],
                       ),
                     ],
@@ -86,7 +115,8 @@ class HomeView extends StatelessWidget {
             itemCount: 4, // Placeholder count
             itemBuilder: (context, index) {
               return Card(
-                margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -100,8 +130,16 @@ class HomeView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Biscuit ${index + 1}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.textColor)),
-                          Text('\$500', style: TextStyle(fontSize: 14, color: AppColors.buttonBackground)), // Placeholder price
+                          Text('Biscuit ${index + 1}',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.textColor)),
+                          Text('\$500',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColors
+                                      .buttonBackground)), // Placeholder price
                         ],
                       ),
                     ],
