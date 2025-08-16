@@ -7,6 +7,9 @@ import 'package:myapp/features/auth/presentation/pages/signup_page.dart';
 import 'package:myapp/features/egold/presentation/pages/egold_page.dart';
 import 'package:myapp/features/gifts/presentation/pages/gifts_page.dart';
 import 'package:myapp/features/home/presentation/pages/home_page.dart';
+import 'package:myapp/features/cart/presentation/pages/cart_page.dart';
+import 'package:myapp/features/order_success/presentation/pages/order_success_page.dart';
+import 'package:myapp/features/order_track/presentation/pages/order_track_page.dart';
 import 'package:myapp/features/you/presentation/pages/you_page.dart';
 import 'package:myapp/features/categories/presentation/pages/categories_page.dart';
 import 'package:myapp/splash_screen.dart';
@@ -55,6 +58,18 @@ class AppRouter {
       GoRoute(
         path: YouPage.routeName,
         builder: (context, state) => YouPage.builder(state),
+      ),
+      GoRoute(
+        path: CartPage.routeName,
+        builder: (context, state) => CartPage.builder(state),
+      ),
+      GoRoute(
+        path: OrderSuccessPage.routeName,
+        builder: (context, state) => OrderSuccessPage.builder(state),
+      ),
+      GoRoute(
+        path: OrderTrackPage.routeName,
+        builder: (context, state) => OrderTrackPage.builder(state),
       ),
     ],
   );
