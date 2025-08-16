@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/core/widget/animations/text_animation.dart';
 import 'package:myapp/static/AppColors.dart';
 import 'package:myapp/static/ThirdPartyApi.dart';
 
@@ -33,10 +34,13 @@ class _HomeViewState extends State<HomeView> {
           // Banner Placeholder
           Container(
             height: 150,
-            color: AppColors.primary,
+            color: AppColors.buttonBackground,
             child: Center(
-              child: Text(
-                'Promotional Banner',
+              child: AnimatedText(
+                type: AnimatedTextType.typing,
+                // repeat: true,
+                repeatDuration: Duration(seconds: 5),
+                text: 'Promotional Banner',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -48,8 +52,10 @@ class _HomeViewState extends State<HomeView> {
           const SizedBox(height: 16.0), // Add some spacing below the banner
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Coins ${goldPrice}',
+            child: AnimatedText(
+              type: AnimatedTextType.scale,
+              repeatDuration: Duration(seconds: 3),
+              text: 'Coins',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
